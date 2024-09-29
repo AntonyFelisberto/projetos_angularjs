@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Angular Validation</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,100,700,900" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="js/lib/angular/angular.min.js"></script>
+  <script src="js/app.js"></script>
+</head>
+<body ng-controller="myController">
+<div class="page">
+  <section class="card register">
+    <!-- 
+      OS DADOS DIGITADOS PELO USUARIO SÃO GUARDADOS NESTE myForm PARA SEREM USADOS FORA DO form
+      O novalidate DESABILITA O SITE VERIFICAR O FORMULARIO 
+      ng-submit CHAMA O MÉTODO DO CONTROLER PASSANDO DADOS DA VIEW
+    -->
+    <form name="myform" ng-submit="registrarUsuario(user)" novalidate>
+
+      <div class="textintro">
+        <h1>Form Validation</h1>
+        <p>Please fill out the following form</p>
+      </div>
+
+      <fieldset>
+        <!--user é uma variavel abstrata que guarda os valores, caso queira velos utilize {{user}}-->
+        <input type="text" name="firstname" placeholder="First Name" ng-model="user.firstname" ng-required="true" ng-minlength=5 ng-maxlength=50 ng-pattern="">
+        <input type="text" name="lastname"  placeholder="Last Name" ng-model="user.lastname" ng-required="true" ng-minlength=5 ng-maxlength=50 ng-pattern="">
+        <input type="email" name="email" placeholder="Email" ng-model="user.email" ng-required="true" ng-minlength=5 ng-maxlength=50 ng-pattern="">
+        <input type="password" name="password" placeholder="Password" ng-model="user.password" ng-required="true" ng-minlength=5 ng-maxlength=50 ng-pattern="">
+      </fieldset>
+
+      <div>
+        <!-- OPERADOR LÓGICO && E || PARA UNIR VARIAS VALIDAÇÕES -->
+        <p class="erro validationError" ng-show="myform.firstname.$invalid && myform.firstname.$touched">O nome inserido não é valido, minimo 5 caracteres</p>
+        <p class="erro validationError" ng-show="myform.lastname.$invalid && myform.lastname.$touched">O sobrenome inserido não é valido, minimo 5 caracteres</p>
+        <p class="erro validationError" ng-show="myform.email.$invalid && myform.email.$touched">O e-mail inserido não é valido, minimo 5 caracteres</p>
+        <p class="erro validationError" ng-show="myform.password.$invalid && myform.password.$touched">A senha inserida não é valida, minimo 5 caracteres</p>
+      </div>
+
+      <button type="submit" class="btn">Submit</button>
+    </form>
+  </section>
+</div>
+</body>
+</html>
+
+<!--  
+VALIDADORES 
+  ng-required     NECESSARIO O PREENCHIMENTO
+  ng-minlength    TAMANHO MINIMO DE CARACTERES
+  ng-maxlength    TAMANHO MAXIMO DE CARACTERES
+  ng-pattern      PADRÃO A 
+
+  ng-invalid      VALOR INVALIDO
+  ng-valid        VALOR VALIDO
+  ng-pristine     NÃO FOI USADO
+  ng-touched      FOI TOCADO
+  ng-dirty        ESTA SENDO USADO
+
+OPERADORES COM ACESSO A variavel.
+
+  $invalid    VALOR INVALIDO
+  $valid      VALOR VALIDO
+  $pristine   NÃO FOI USADO
+  $touched    FOI TOCADO
+  $dirty      ESTA SENDO USADO
+
+CSS DE VALIDAÇÃO
+
+  input.ng-invalid.ng-touched{
+    border: 1px solid #DA3637;
+  }
+
+  input.ng-valid.ng-touched{
+    border: 1px solid #509D12;
+  }
+
+  input.ng-valid.ng-touched{
+    border: 1px solid #509D12;
+  }
+
+  .ng-invalid .btn{
+    display: none;
+  }
+-->

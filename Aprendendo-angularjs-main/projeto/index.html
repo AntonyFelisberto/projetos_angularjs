@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS</title>
+  <meta name="viewport" content="width=device-width">
+
+  <link rel="stylesheet" href="lib/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="lib/angular/angular.min.js"></script>
+  <script src="lib/angular/angular-route.min.js"></script>
+
+  <script src="lib/app.js"></script>
+  <script src="lib/controller/controllers.js"></script>
+</head>
+<body class="bg-secondary">
+
+  <div ng-view></div>
+
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/bootstrap/popper.min.js"></script>
+  <script src="lib/bootstrap/bootstrap.min.js"></script>
+
+</body>
+</html>
+
+<!-- FILTRO PARA O NG REPEAT
+    NORMAL
+<li class="list-group-item" ng-repeat="artista in artistas">
+    ng-repeat com filters LIMITANDO OS NUMEROS DE ITENS QUE APARECE
+<li class="list-group-item" ng-repeat="artista in artistas | limitTo:4">
+    ng-repeat com filters LIMITANDO OS NUMEROS DE ITENS QUE APARECE COMEÇANDO A MOSTRAR A PARTIR DO 2
+<li class="list-group-item" ng-repeat="artista in artistas | limitTo:4:2">
+    ng-repeat com filters LIMITANDO OS NUMEROS DE ITENS QUE APARECE COMEÇANDO A MOSTRAR A PARTIR DO ITEM DE TRAS PARA FRENTE
+<li class="list-group-item" ng-repeat="artista in artistas | limitTo:4:-2">
+    ng-repeat com filters LIMITANDO A APARECER SOMENTE OS ITENS QUE SÃO PARECIDOS COM VALOR DA VARIAVEL 
+<li class="list-group-item" ng-repeat="artista in artistas | filter:query">
+    ng-repeat com filters ORDENANDO OS DADOS POR ATRIBUTO QUE EXISTE NO ARRAY
+<li class="list-group-item" ng-repeat="artista in artistas | orderBy:'name'">
+    ng-repeat com filters ORDENANDO OS DADOS POR ATRIBUTO QUE EXISTE NO ARRAY E VAI MOSTRAR EM ORDEM REVERSA
+<li class="list-group-item" ng-repeat="artista in artistas | orderBy:'name':'reverse'">
+    É POSSIVEL COLOCAR MAIS DE UM FILTRO USANDO |
+<li class="list-group-item" ng-repeat="artista in artistas | filter:query |orderBy:'name'">
+    EM TODOS OS FILTROS É POSSIVEL COLOCAR VARIAVEIS PARA DEFINIR OS VALORES DE FILTRAGEM
+<li class="list-group-item" ng-repeat="artista in artistas | filter:query |orderBy:artistasOrdenacao">
+<li class="list-group-item" ng-repeat="artista in artistas | filter:query |orderBy:artistasOrdenacao:direction">
+-->

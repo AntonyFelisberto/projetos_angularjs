@@ -1,0 +1,24 @@
+<section class="card register">
+  <form name="myform" ng-submit="register()">
+
+    <div class="textintro">
+      <h1>Register</h1>
+      <p>To access site features</p>
+      <p class="message" ng-show="mensagem">{{ mensagem }}</p><!-- ng-show SÓ VAI EXIBIR CASO A VARIAVEL CONTENHA VALOR-->
+    </div>
+
+    <fieldset>
+      <input type="text" name="firstname" placeholder="First Name" ng-model="user.firstname">
+      <p class="error validationerror" ng-show="myform.firstname.$invalid && myform.firstname.$touched">FIRST NAME INVALIDO</p>
+      <input type="text" name="lastname" placeholder="Last Name" ng-model="user.lastname">
+      <p class="error validationerror" ng-show="myform.lastname.$invalid && myform.lastname.$touched">LAST NAME INVALIDO</p>
+      <input type="email" name="email" placeholder="Email" ng-model="user.email">
+      <p class="error validationerror" ng-show="myform.email.$invalid && myform.email.$touched">EMAIL INVALIDO</p>
+      <input type="password" name="password" placeholder="Password" ng-model="user.password">
+      <p class="error validationerror" ng-show="myform.password.$invalid && myform.password.$touched">PASSWORD INVALIDO</p>
+    </fieldset>
+
+    <button type="submit" class="btn" ng-disabled="myform.$invalid">Register</button>
+    <p>or <a href="#/login">login</a></p>
+  </form>
+</section>

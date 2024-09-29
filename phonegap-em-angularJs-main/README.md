@@ -1,0 +1,2 @@
+# phonegap em angularJs
+ 

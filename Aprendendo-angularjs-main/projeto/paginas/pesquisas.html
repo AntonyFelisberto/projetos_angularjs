@@ -1,0 +1,61 @@
+<div class="container mt-sm-3">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6 card">
+        <div class="card-body">
+          <h2 class="card-title text-dark">Artist Directory</h2>
+
+          <div class="form-row mb-2">
+
+            <div class="col">
+              <!--ng-show,ng-if,ng-hide Só EXECUTAM CASO A CONDIÇÃO SEJA VERDADEIRA-->
+              <label class="col-form-label text-right" for="searchQuery">search <span ng-show="query">{{"for: " + query }}</span></label>
+            </div>
+            
+            <div class="col-12">
+              <input class="form-control form-control-lg" id="searchQuery" placeholder="Search for artists" autofocus ng-model="query">
+            </div>
+
+            <div class="form-row">
+              <div class="col">
+                <select class="form-control form-control-inline mr-3 w-100" ng-model="artistasOrdenacao">
+                  <option value="name">Name</option>
+                  <option value="reknown">Reknown</option>
+                </select>
+              </div>
+              <div class="col-5 col-md-4">
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label"><input class="form-check-input" type="radio" name="direction" checked ng-model="direction"> asc</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="direction" value="reverse" ng-model="direction"> desc</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="artist-list container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-9 col-md-7 col-lg-5">
+            <ul class=" list-group d-flex" ng-if="query">
+                <li class="list-group-item" ng-repeat="artista in artistas | filter:query |orderBy:artistasOrdenacao:direction">
+                  <!--{{artistas.indexOf(artista)}} VAI PROCURAR A POSIÇÃO DO ITEM artista DENTRO DOS VALORES DE artistas-->
+                  <a href="#/details/{{artistas.indexOf(artista)}}">
+                    <div class="media d-flex align-items-center">
+                        <!-- QUANDO ESTA USANDO ARQUIVOS E TEM QUE UNIR COM PROPRIEDADES DO ANGULAR É NECESSARIO USAR O ng-src -->
+                        <img class="rounded-circle mr-3" ng-src="images/{{artista.shortname}}_tn.jpg" alt="Photo of {{artista.name}}">
+                        <div class="media-body">
+                            <h5 class="my-0 text-dark">{{artista.name | uppercase }}</h5>
+                            <div class="text-secondary font-italic">{{artista.reknown | lowercase }}</div>
+                        </div>
+                    </div>
+                  </a>  
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

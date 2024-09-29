@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+  <head>
+    <meta charset="UTF-8">
+    <title>Angular Registration</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,100,700,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/lib/angular/angular.min.js"></script>
+    <script src="js/lib/angular/angular-route.min.js"></script>
+    <script src="js/lib/angular/angular-animate.min.js"></script>
+
+    <!--SCRIPT DISPONIBILIZADO PELO FIREBASE-->
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyBwLDkRBl5jOqGemXvTJ4z8fruhG15VIPw",
+        authDomain: "angularregistrar.firebaseapp.com",
+        projectId: "angularregistrar",
+        storageBucket: "angularregistrar.appspot.com",
+        messagingSenderId: "28342456525",
+        appId: "1:28342456525:web:7121cf057b40f5de015984",
+        measurementId: "G-MQNEJPBJ5P"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
+
+    <!--ADICIONANDO O ANGULAR FIREBASE-->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+    
+    <!--TODA VEZ QUE CRIAR UM NOVO JAVASCRIPT PRO ANGULAR TEM QUE COLOCA LO AQUI-->
+    <script src="js/app.js"></script>
+    <script src="js/controllers/registration.js"></script>
+    <script src="js/controllers/success.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="cf" ng-include="'views/nav.html'"></nav> <!--ng-include FARA APARECER UM HTML, PARA USA LO TEMOS QUE COLOCAR '' DENTRO DAS ASPAS OU O CONTRARIO, E DIZER QUAL A PAGINA QUE QUEREMOS QUE APAREÇA-->
+    </header>
+    <div class="page">
+      <!--ng-view SERVE PARA MAPEAR AS ROTAS DO ANGULAR-->
+      <main class="cf" ng-view></main>
+    </div>
+  </body>
+</html>
